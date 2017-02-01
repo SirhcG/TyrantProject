@@ -5,6 +5,8 @@
  */
 package tyrantunlashed2;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author planb
@@ -12,8 +14,8 @@ package tyrantunlashed2;
 public class Player {
     
     private int Health;
-    private CardBase[] Field;
-    private CardBase[] Hand;
+    private ArrayList<CardBase> Field;
+    private ArrayList<CardBase> Hand;
     
     public Player(int Health , int cardAmount){
         this.Health = Health;
@@ -24,7 +26,7 @@ public class Player {
         this.Health = Health;
     }
     
-    public void setCards(CardBase[] z){
+    public void setCards(ArrayList<CardBase> z){
         this.Field = z;
     }
     
@@ -32,9 +34,9 @@ public class Player {
         return this.Health;
     }
     
-    public int checkSize(){
-        int temp = Field.length;
-        return temp;
+    public ArrayList<CardBase> getField(){
+    	return Field;
     }
+    
     
 }
