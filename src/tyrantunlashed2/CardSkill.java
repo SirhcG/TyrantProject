@@ -12,6 +12,6 @@ package tyrantunlashed2;
 public interface CardSkill {
     
     public void checkSkill();
-    public void setBoost();
+    public void ability(Player p, Player o);
     
 }

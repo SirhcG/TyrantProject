@@ -17,16 +17,24 @@ public class TyrantUnlashed2 {
         AttackBoost one = new AttackBoost(20, 30);
         CardBase[] val = {new AttackBoost(20, 30), new AttackBoost(20, 30), new AttackBoost(20, 30)};
         
+        CardBase[] opponentHand = {new AttackBoost(20, 30), new AttackBoost(20, 30), new AttackBoost(20, 30)};
+        Player opponent = new Player(100, 3);
+        opponent.setCards(opponentHand);
+        
+        Player cg = new Player(100, 3);
+        cg.setCards(val);
+        
         System.out.println(one.getAttack());
         System.out.println(one.getHealth());
         one.checkSkill();
-        one.setBoost();
+        one.ability(cg, opponent);
         System.out.println(one.getAttack());
         System.out.println();
        
         
-        Player cg = new Player(100, 3);
-        cg.setCards(val);
+        
+        
+        
         
         System.out.println(cg.checkSize());
         

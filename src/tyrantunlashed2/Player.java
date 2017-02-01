@@ -12,11 +12,12 @@ package tyrantunlashed2;
 public class Player {
     
     private int Health;
-    private CardBase[] Cards;
+    private CardBase[] Field;
+    private CardBase[] Hand;
     
     public Player(int Health , int cardAmount){
         this.Health = Health;
-        CardBase[] Cards = new CardBase[cardAmount];
+        CardBase[] Field = new CardBase[cardAmount];
     }
     
     public void setHealth(int Health){
@@ -24,7 +25,7 @@ public class Player {
     }
     
     public void setCards(CardBase[] z){
-        this.Cards = z;
+        this.Field = z;
     }
     
     public int getHealth(){
@@ -32,7 +33,7 @@ public class Player {
     }
     
     public int checkSize(){
-        int temp = Cards.length;
+        int temp = Field.length;
         return temp;
     }
     

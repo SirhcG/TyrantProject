@@ -19,7 +19,7 @@ public class ArmorBoost extends CardBase implements CardSkill {
     }
     
      @Override
-    public void setBoost() {
+    public void ability(Player p, Player o) {
         int temp = this.getHealth();
         temp = temp + 25;
         this.setHealth(temp);
