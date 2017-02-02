@@ -12,14 +12,14 @@ package tyrantunlashed2;
 public abstract class Duel {
     private Player one;
     private Player two;
-    private Move test;
-    private Move test2;
+    //private Move test;
+    //private Move test2;
     
-    public Duel(Player one, Player two, Move a, Move b){
+    public Duel(Player one, Player two/*, Move a, Move b*/){
         this.one = one;
         this.two = two;
-        this.test = a;
-        this.test2 = b;
+       //this.test = a;
+        //this.test2 = b;
     }
     
    public void Battle(){

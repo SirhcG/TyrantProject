@@ -136,15 +136,15 @@ public class Player {
         return Hand;
     }
     
-    public void playCard(Move move){ //this adds the card from hand Arraylist to field ArrayList , and then removes it from hand Arraylist
+    public void playCard(int i){
     	
-    	CardBase c = Hand.get(move.handIndex);
+    	CardBase c = Hand.get(i);
     	Field.add(c);
-    	Hand.remove(move.handIndex);
+    	Hand.remove(i);
     }
     
     public void doMove(Move move){
-    	playCard(move);
+    	playCard(move.handIndex);
     	turnCounter++;
     }
     

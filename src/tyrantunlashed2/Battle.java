@@ -11,8 +11,8 @@ package tyrantunlashed2;
  */
 public class Battle extends Duel {
     
-    public Battle(Player one, Player two, Move a, Move b) {
-        super(one, two, a, b);
+    public Battle(Player one, Player two) {
+        super(one, two);
     }
     
 }
