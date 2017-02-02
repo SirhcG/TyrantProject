@@ -18,9 +18,24 @@ public class TyrantUnlashed2 {
         
         AttackBoost one = new AttackBoost(20, 30);
         
-        CardBase card0 = new AttackBoost(20, 30);
-        CardBase card1 = new AttackBoost(20, 30);
-        CardBase card2 = new AttackBoost(20, 30);
+        AttackBoost card0 = new AttackBoost(20, 30);
+        ArmorBoost card1 = new ArmorBoost(20, 30);
+        StrikeBoost card2 = new StrikeBoost(20, 30);
+        
+        CardBase empty = new CardBase(0,0);
+        
+        ArrayList<CardBase> emptylist = new ArrayList<>();
+        ArrayList<CardBase> emptylist2 = new ArrayList<>();
+        
+        emptylist.add(empty);
+        emptylist.add(empty);
+        emptylist.add(empty);
+        
+        emptylist2.add(empty);
+        emptylist2.add(empty);
+        emptylist2.add(empty);
+        
+        
         
         ArrayList<CardBase> val = new ArrayList<>();
         
@@ -30,30 +45,75 @@ public class TyrantUnlashed2 {
         
         Player cg = new Player(100, 3);
         cg.setCards(val);
+        cg.setField(emptylist);
         
-        card0 = new AttackBoost(20, 30);
-        card1 = new AttackBoost(20, 30);
-        card2 = new AttackBoost(20, 30);
+        
+       AttackBoost card3 = new AttackBoost(20, 20);
+       AttackBoost card4 = new AttackBoost(20, 15);
+       AttackBoost card5 = new AttackBoost(20, 25);
         
         ArrayList<CardBase> opponentHand = new ArrayList<>() ;
         
-        opponentHand.add(card0);
-        opponentHand.add(card1);
-        opponentHand.add(card2);
+        opponentHand.add(card3);
+        opponentHand.add(card4);
+        opponentHand.add(card5);
         
         Player opponent = new Player(100, 3);
-        cg.setCards(opponentHand);
+        opponent.setCards(opponentHand);
+        opponent.setField(emptylist2);
+        opponent.setCheck();
         
         
-        System.out.println(one.getAttack());
-        System.out.println(one.getHealth());
-        one.checkSkill();
-        one.ability(cg, opponent);
-        System.out.println(one.getAttack());
-        System.out.println();
+        Move test = new Move(cg);
+        Move test2 = new Move(opponent);
+       
+        test.playCard();
+        test.playCard();
+        test.playCard();
+        
+        test2.playCard();
+        test2.playCard();
+        test2.playCard();
+        
+        Battle x = new Battle(cg, opponent , test, test2);
+        x.Battle();
+        x.OppBattle();
+        x.Battle();
+        x.OppBattle();
+       // x.Battle();
+        //x.OppBattle();
+        x.CheckHealth(cg);
+        x.CheckHealth(opponent);
        
         
-        System.out.println(cg.getField().size());
+        
+         
+        System.out.println(cg.getField());
+        System.out.println(cg.getHand());
+        System.out.println(cg.getHealth());
+        System.out.println();
+        
+        
+        System.out.println(opponent.getField());
+        System.out.println(opponent.getHand());
+        System.out.println(opponent.getHealth());
+        
+        
+        
+        
+        
+        
+        
+     
+        
+        
+        
+        
+        
+        
+       
+        
+       
         
         
         

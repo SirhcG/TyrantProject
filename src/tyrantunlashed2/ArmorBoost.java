@@ -15,20 +15,20 @@ public class ArmorBoost extends CardBase implements CardSkill {
     
     public ArmorBoost(int Attack, int Health){
         super(Attack, Health);
-        this.Armor = 25;
+        this.Armor = 15;
     }
     
      @Override
     public void ability(Player p, Player o) {
         int temp = this.getHealth();
-        temp = temp + 25;
+        temp = temp + 15;
         this.setHealth(temp);
     }
     
   
     @Override
     public void checkSkill() {
-        System.out.println("Cards Armor skill will increase Hp by 25 points !! \n");
+        System.out.println("Cards Armor skill will increase Hp by 15 points !! \n");
     }
 
    

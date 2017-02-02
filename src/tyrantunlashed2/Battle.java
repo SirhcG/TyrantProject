@@ -9,9 +9,10 @@ package tyrantunlashed2;
  *
  * @author planb
  */
-public interface CardSkill {
+public class Battle extends Duel {
     
-    public void checkSkill();
-    public void ability(Player p, Player o);
+    public Battle(Player one, Player two, Move a, Move b) {
+        super(one, two, a, b);
+    }
     
 }

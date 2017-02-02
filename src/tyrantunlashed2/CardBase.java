@@ -13,7 +13,6 @@ public class CardBase {
     
     private int baseAttack;
     private int baseHealth;
-    
     private int damage;
     
     public CardBase(int Attack, int Health){
@@ -30,6 +29,10 @@ public class CardBase {
     	damage = _damage;
     }
     
+    public int getDamage(){
+        return this.damage;
+    }
+    
     public void setHealth(int Health){
         this.baseHealth = Health;
     }
@@ -42,5 +45,13 @@ public class CardBase {
         return this.baseAttack;
     }
     
+   public void ability(Player one, Player two){
+       // child classes will overload this.
+   }
+    
+    @Override
+     public String toString(){
+        return("Attack " + getAttack() + " Health " + getHealth());
+    }
    
 }
