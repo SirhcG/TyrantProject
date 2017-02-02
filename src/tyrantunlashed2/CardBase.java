@@ -14,6 +14,8 @@ public class CardBase {
     private int baseAttack;
     private int baseHealth;
     
+    private int damage;
+    
     public CardBase(int Attack, int Health){
         
         this.baseAttack = Attack;
@@ -22,6 +24,10 @@ public class CardBase {
     
     public void setAttack(int Attack){
         this.baseAttack = Attack;
+    }
+    
+    public void setDamage(int _damage){
+    	damage = _damage;
     }
     
     public void setHealth(int Health){

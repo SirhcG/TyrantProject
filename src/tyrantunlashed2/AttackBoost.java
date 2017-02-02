@@ -16,10 +16,10 @@ public class AttackBoost extends CardBase implements CardSkill{
     }
     
     @Override
-    public void setBoost(){
+    public void ability(Player p, Player o){
        int temp = this.getAttack();
        temp = temp + 10;
-       this.setAttack(temp);
+       this.setDamage(temp);
        }
 
     @Override
