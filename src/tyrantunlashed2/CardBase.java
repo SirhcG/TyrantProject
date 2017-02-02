@@ -11,17 +11,29 @@ package tyrantunlashed2;
  */
 public class CardBase {
     
+	private String name;
     private int baseAttack;
     private int baseHealth;
+    private int damage;
     
-    public CardBase(int Attack, int Health){
+    public CardBase(String _name, int Attack, int Health){
         
+    	name = _name;
         this.baseAttack = Attack;
         this.baseHealth = Health;
+        damage = Attack;
     }
     
     public void setAttack(int Attack){
         this.baseAttack = Attack;
+    }
+    
+    public void setDamage(int _damage){
+    	damage = _damage;
+    }
+    
+    public int getDamage(){
+        return this.damage;
     }
     
     public void setHealth(int Health){
@@ -36,5 +48,13 @@ public class CardBase {
         return this.baseAttack;
     }
     
+   public void ability(Player one, Player two){
+       // child classes will overload this.
+   }
+    
+    @Override
+     public String toString(){
+        return(name + " Attack " + getAttack() + " Health " + getHealth());
+    }
    
 }

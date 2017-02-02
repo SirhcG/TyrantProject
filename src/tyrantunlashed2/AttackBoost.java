@@ -11,15 +11,16 @@ package tyrantunlashed2;
  */
 public class AttackBoost extends CardBase implements CardSkill{
     
-    public AttackBoost(int Attack, int Health){
-        super(Attack, Health);
+    public AttackBoost(String _name, int Attack, int Health){
+        super(_name, Attack, Health);
     }
     
     @Override
-    public void setBoost(){
+    public void ability(Player p, Player o){
+       this.setDamage(0);
        int temp = this.getAttack();
-       temp = temp + 10;
-       this.setAttack(temp);
+       temp = temp + 15;
+       this.setDamage(temp);
        }
 
     @Override
