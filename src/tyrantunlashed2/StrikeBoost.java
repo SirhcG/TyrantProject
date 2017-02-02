@@ -20,7 +20,7 @@ public class StrikeBoost extends CardBase implements CardSkill {
     }
     
      @Override
-    public void setBoost() {
+    public void ability(Player p, Player o) {
         
     }
     

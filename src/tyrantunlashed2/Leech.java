@@ -9,6 +9,30 @@ package tyrantunlashed2;
  *
  * @author Danny Huang
  */
-public class Leech {
-    //testing github functionality
+public class Leech extends CardBase implements CardSkill{
+	
+	int leech;
+	
+	public Leech(int Attack, int Health, int _leech){
+        super(Attack, Health);
+        this.leech = _leech;
+    }
+	
+	@Override
+    public void checkSkill() {
+        System.out.println("Leech heals this card as it deals Attack damage to an Assault card.\n");
+    }
+	
+	@Override
+	public void ability(Player p, Player o) {
+		int temp = getHealth();
+		
+		if(leech > getAttack())
+			temp+=getAttack();
+		else
+			temp+=leech;
+		
+		setHealth(temp);
+		
+	}
 }
