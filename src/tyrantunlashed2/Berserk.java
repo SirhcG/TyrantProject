@@ -18,5 +18,6 @@ public class Berserk extends CardBase implements CardSkill{
 	public void ability(Player p, Player o) { //ability triggers before card attacks
 		setAttack(getAttack()+berserk);
 		
+		checkSkill();
 	}
 }

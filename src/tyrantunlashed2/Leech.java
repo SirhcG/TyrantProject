@@ -34,5 +34,6 @@ public class Leech extends CardBase implements CardSkill{
 		
 		setHealth(temp);
 		
+		checkSkill();
 	}
 }

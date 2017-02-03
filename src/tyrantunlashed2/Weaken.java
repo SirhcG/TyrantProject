@@ -27,5 +27,6 @@ public class Weaken extends CardBase implements CardSkill{
 		
 		target.setDamage(target.getDamage()-weaken);
 		
+		checkSkill();
 	}
 }

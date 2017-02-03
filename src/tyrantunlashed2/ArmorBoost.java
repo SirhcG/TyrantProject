@@ -23,6 +23,8 @@ public class ArmorBoost extends CardBase implements CardSkill {
         int temp = this.getHealth();
         temp = temp + 15;
         this.setHealth(temp);
+        
+        checkSkill();
     }
     
   

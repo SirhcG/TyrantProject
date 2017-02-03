@@ -40,6 +40,8 @@ public class StrikeBoost extends CardBase implements CardSkill {
             o.getCard(val - 1).setHealth(temp);
             
         }
+        
+        checkSkill();
     }
     
     

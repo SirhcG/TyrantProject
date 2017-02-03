@@ -21,6 +21,8 @@ public class AttackBoost extends CardBase implements CardSkill{
        int temp = this.getAttack();
        temp = temp + 15;
        this.setDamage(temp);
+       
+       checkSkill();
        }
 
     @Override

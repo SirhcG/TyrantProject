@@ -17,6 +17,7 @@ public class Player {
 		SIMPLE, DEFENSIVE
 	}
 	//variable names should not be capitalized
+	private String name;
     private int Health;
     private ArrayList<CardBase> Field;
     private ArrayList<CardBase> Hand;
@@ -26,7 +27,9 @@ public class Player {
     private int Check = 0;
     Strategy strategy;
     
-    public Player(int Health , int cardAmount, StrategyType s){ //why do you need to pass in cardAmmount? is this just the maximum field and handsize? 
+    public Player(String _name, int Health , int cardAmount, StrategyType s){ //why do you need to pass in cardAmmount? is this just the maximum field and handsize? 
+    	
+    	name = _name;
         this.Health = Health;
         Hand = new ArrayList<>();
         Field = new ArrayList<>();
@@ -145,6 +148,7 @@ public class Player {
     
     public void doMove(Move move){ //takes in a move object and does that move
     	playCard(move.handIndex);
+    	System.out.println(name + " PLAYED A CARD ONTO THE FIELD\n");
     	turnCounter++;
     }
     
