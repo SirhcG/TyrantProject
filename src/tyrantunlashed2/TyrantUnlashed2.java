@@ -24,23 +24,6 @@ public class TyrantUnlashed2 {
         ArmorBoost card1 = new ArmorBoost("name", 20, 30);
         StrikeBoost card2 = new StrikeBoost("name", 20, 30);
         
-        /*
-        CardBase empty = new Empty();
-        
-        
-        ArrayList<CardBase> emptylist = new ArrayList<>();
-        ArrayList<CardBase> emptylist2 = new ArrayList<>();
-
-        
-        emptylist.add(empty);
-        emptylist.add(empty);
-        emptylist.add(empty);
-        
-        emptylist2.add(empty);
-        emptylist2.add(empty);
-        emptylist2.add(empty);
-        
-        */
         
         ArrayList<CardBase> val = new ArrayList<>();
         
@@ -50,7 +33,6 @@ public class TyrantUnlashed2 {
         
         Player cg = new Player(100, 3, StrategyType.SIMPLE);
         cg.setCards(val);
-        //cg.setField(emptylist);
         
         
         AttackBoost card3 = new AttackBoost("name", 20, 20);
@@ -65,7 +47,6 @@ public class TyrantUnlashed2 {
         
         Player opponent = new Player(100, 3, StrategyType.DEFENSIVE);
         opponent.setCards(opponentHand);
-        //opponent.setField(emptylist2);
         opponent.setCheck();
         
         

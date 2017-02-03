@@ -18,7 +18,7 @@ public class Weaken extends CardBase implements CardSkill{
     }
 	
 	@Override
-	public void ability(Player p, Player o) {
+	public void ability(Player p, Player o) { //ability triggers before card attacks
 		ArrayList<CardBase> oppField = o.getField();
 		int fieldSize = o.getField().size();	//size of opponent's field
 		

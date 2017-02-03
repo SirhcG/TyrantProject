@@ -1,6 +1,6 @@
 package tyrantunlashed2;
 
-abstract class Strategy {
+abstract class Strategy { 
 
 	protected Player p, o;
 	

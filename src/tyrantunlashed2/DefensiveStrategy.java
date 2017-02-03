@@ -15,7 +15,7 @@ public class DefensiveStrategy extends Strategy {
 		if(p.getHand().size() == 0)
 			return null;
 		
-		for(int i = 0; i < p.getHand().size() ; i++){
+		for(int i = 0; i < p.getHand().size() ; i++){ //nextMove = card with the most HP
 			if(p.getHand().get(i).getHealth() > maxHp){
 				maxHp = p.getHand().get(i).getHealth();
 				index = i;

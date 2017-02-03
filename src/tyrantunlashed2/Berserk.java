@@ -15,7 +15,7 @@ public class Berserk extends CardBase implements CardSkill{
     }
 	
 	@Override
-	public void ability(Player p, Player o) {
+	public void ability(Player p, Player o) { //ability triggers before card attacks
 		setAttack(getAttack()+berserk);
 		
 	}

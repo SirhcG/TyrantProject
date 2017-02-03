@@ -42,7 +42,7 @@ public class Player {
         this.Health = Health;
     }
     
-    public void setCards(ArrayList<CardBase> a){ //you can just 
+    public void setCards(ArrayList<CardBase> a){ 
         this.Hand = a;
     }
     
@@ -68,7 +68,7 @@ public class Player {
     }
     
     public int getCardInField(){
-        //return this.CardsInField;
+        
     	return Field.size();
     }
     
@@ -103,27 +103,27 @@ public class Player {
     
     public void setCard(){
         
-       CardBase temp = getHandCard(0); //why 0? What if i wanted to play the second card
-       Field.set(FieldPosition, temp); //this can just be Field.add(temp); since add just adds it to the end of the array
+       CardBase temp = getHandCard(0); 
+       Field.set(FieldPosition, temp); 
        Hand.remove(0);
-       Hand.trimToSize(); //this is unnecessary since remove(0) shifts all the remaining cards to the left
+       Hand.trimToSize(); 
     }
     
-   public CardBase getCard(int index){ //why not just run getField().get(index)
+   public CardBase getCard(int index){ 
        return Field.get(index);
    }
    
-   public CardBase getHandCard(int index){ //why not just run getHand.get(index)
+   public CardBase getHandCard(int index){ 
        return Hand.get(index);
    }
    
   
    
-   public void remove(int index){ //getField().remove(index) ?
+   public void remove(int index){ 
        Field.remove(index);
    }
    
-   public void removeHand(int index){ //getHand().remove(index)?
+   public void removeHand(int index){ 
         Hand.remove(index);
         
    }
@@ -136,14 +136,14 @@ public class Player {
         return Hand;
     }
     
-    public void playCard(int i){
+    public void playCard(int i){ //plays a card from hand to field
     	
     	CardBase c = Hand.get(i);
     	Field.add(c);
     	Hand.remove(i);
     }
     
-    public void doMove(Move move){
+    public void doMove(Move move){ //takes in a move object and does that move
     	playCard(move.handIndex);
     	turnCounter++;
     }

@@ -24,7 +24,7 @@ public class Leech extends CardBase implements CardSkill{
     }
 	
 	@Override
-	public void ability(Player p, Player o) {
+	public void ability(Player p, Player o) { //ability triggers before card attacks
 		int temp = getHealth();
 		
 		if(leech > getAttack())

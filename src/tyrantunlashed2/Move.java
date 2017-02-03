@@ -23,32 +23,7 @@ public class Move {
 	public String toString(){
 		return String.valueOf(handIndex);
 	}
-	/*
-    private Player one;
-   
-    
-    public Move(Player one){
-        this.one = one;
-       }
-    
-    
-    public void playCard(){
-               
-            if(one.getCardInField()== 0){
-               one.setCard();
-               one.setCardInField();
-               one.setTurn();
-               one.setPosition();
-               }
-            else if(one.getCardInField() >= 1){
-               one.setCard();
-               one.setCardInField();
-               one.setTurn();
-               one.setPosition();
-               }
-           
-            }
-           */
+
 }
 
     
