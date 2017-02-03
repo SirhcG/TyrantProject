@@ -88,9 +88,7 @@ public class TyrantUnlashed2 {
         System.out.println("OPPONENT FIELD");
         System.out.println(opponent.getField());
     }
-<<<<<<< HEAD
+
 }
-=======
-    
-}
->>>>>>> origin/2-2-17
+
+
