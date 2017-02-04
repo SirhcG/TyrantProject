@@ -94,10 +94,3 @@ public class TyrantUnlashed2 {
     }
 
 }
-
-<<<<<<< HEAD
-    
-
-=======
->>>>>>> origin/2-2-17
-
