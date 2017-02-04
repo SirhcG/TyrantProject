@@ -14,8 +14,8 @@ public class StrikeBoost extends CardBase implements CardSkill {
     
     private int baseStrike;
     
-    public StrikeBoost(int Attack, int Health){
-        super(Attack, Health);
+    public StrikeBoost(String _name, int Attack, int Health){
+        super(_name, Attack, Health);
         this.baseStrike = 15;
     }
     
@@ -40,6 +40,8 @@ public class StrikeBoost extends CardBase implements CardSkill {
             o.getCard(val - 1).setHealth(temp);
             
         }
+        
+        checkSkill();
     }
     
     

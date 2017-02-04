@@ -5,106 +5,165 @@
  */
 package tyrantunlashed2;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author planb
  */
 public abstract class Duel {
-    private Player one;
-    private Player two;
-    private Move test;
-    private Move test2;
+
+	private ArrayList<Player> players;
+	Move move;
+	doMoveCommand mCommand;
+	int dmg = 0, health = 0, val = 0, turn = 1;
     
-    public Duel(Player one, Player two, Move a, Move b){
-        this.one = one;
-        this.two = two;
-        this.test = a;
-        this.test2 = b;
+    public Duel(Player one, Player two){
+    	
+    	players = new ArrayList<>();
+    	players.add(one);
+    	players.add(two);
     }
     
-   public void Battle(){
-       for(int i=0; i<one.getCardInField(); i++){
-           
-           int index = 0;
-           if(one.getCard(i) instanceof AttackBoost){
-               one.getCard(i).ability(one, two);
-               int dmg = one.getCard(i).getDamage();
-               int health = two.getCard(index).getHealth();
-               int val = health - dmg;
-               two.getCard(index).setHealth(val);
-               index++;
-               }
-           else if(one.getCard(i) instanceof ArmorBoost){
-               one.getCard(i).ability(one, two);
-               int dmg = one.getCard(i).getAttack();
-               int health = two.getCard(i).getHealth();
-               int val = health - dmg;
-               two.getCard(i).setHealth(health);
-               index++;
-               }
-           else if(one.getCard(i) instanceof StrikeBoost){
-               one.getCard(i).ability(one, two);
-               int dmg = one.getCard(i).getAttack();
-               int health = two.getCard(i).getHealth();
-               int val = health - dmg;
-               two.getCard(i).setHealth(health);
-               index++;
-               }
-           else if(one.getCard(i) instanceof Leech){
-               one.getCard(i).ability(one, two);
-               
-           }
-             
-           
-       }
-   }
-   
-   public void OppBattle(){
-       for(int i=0; i<two.getCardInField(); i++){
-           
-           int index = 0;
-           if(two.getCard(i) instanceof AttackBoost){
-               two.getCard(i).ability(one, two);
-               int dmg = two.getCard(i).getDamage();
-               int health = one.getCard(index).getHealth();
-               int val = health - dmg;
-               one.getCard(index).setHealth(val);
-               index++;
-               }
-           else if(two.getCard(i) instanceof ArmorBoost){
-               two.getCard(i).ability(one, two);
-               int dmg = two.getCard(i).getAttack();
-               int health = one.getCard(i).getHealth();
-               int val = health - dmg;
-               one.getCard(i).setHealth(health);
-               index++;
-               }
-           else if(two.getCard(i) instanceof StrikeBoost){
-               two.getCard(i).ability(one, two);
-               int dmg = two.getCard(i).getAttack();
-               int health = one.getCard(i).getHealth();
-               int val = health - dmg;
-               one.getCard(i).setHealth(health);
-               index++;
-               }
-           else if(two.getCard(i) instanceof Leech){
-               two.getCard(i).ability(one, two);
-               
-           }
-             
-           
-       }
-   }
-   
-   public void CheckHealth(Player x){
-       for(int i=0;i<x.getCardInField(); i++){
-           int Health = x.getCard(i).getHealth();
-           if(Health < 0){
-           x.remove(i);
-           x.removePosition();
-           x.removeCard();
-           }
-       }
-   }
+    public void start(){
+    	
+    	Scanner sc = new Scanner(System.in);
+    	int input = 0;
+    	Player player = players.get(0);
+    	Player opp = players.get(1);
+    	
+    	while(!gameOver()){
+    		player.showInfo();
+    		opp.showInfo();
+    		
+
+    		if(player.getHand().size() > 0){
+    			
+    			System.out.println("\nChoose which card to play. Numbering starts at 0\n");
+        		input = sc.nextInt(); //input for which card to play
+        		
+	    		while(input >= player.getHand().size()){ //if invalid number
+	    			System.out.println("\nInvalid choice. Choose which card to play. Numbering starts at 0\n");
+	        		input = sc.nextInt();
+	    		}
+	    		
+	    		move = new Move(input); //make the move
+	    		mCommand = new doMoveCommand(player,move); //attempting to implement command pattern
+	    		mCommand.execute();
+	    		
+    		}
+    		else{
+    			System.out.println("\nYou have no cards to play. \n");
+    			stop();
+    		}
+    			
+    		
+    		player.showInfo();
+    		opp.showInfo();
+    		
+    		battle(1); //conducts battle for player 1
+    		stop(); //waits for user button press to continue
+    		
+    		System.out.println("\nOpponent's turn starts!\n");
+    		stop();
+    		
+    		move = opp.strategy.nextMove();
+    		if (move != null){
+    			
+    			mCommand = new doMoveCommand(opp,move);
+    			mCommand.execute();
+    			stop();
+    		}else
+    			System.out.println("\nOpponent has no cards to play! \n");
+    		
+    		 //conducts battle for player 2
+    		battle(2);
+    		
+    		endOfTurn(); //end of turn stuff
+    	}
+    }
     
+    public void battle(int turnPlayer){
+	   
+    	if(turn == 1) //cannot attack on first turn
+    		return;
+    	
+	   //if its the players turn
+		Player one = players.get(0);
+		Player two = players.get(1);
+
+		//if its the opponents turn
+		if(turnPlayer == 2){
+			one = players.get(1);
+			two = players.get(0);
+		}
+	   
+		one.showInfo();
+		
+		
+		
+		for(int i=0; i<one.getField().size(); i++){
+	
+			one.getCard(i).ability(one, two);
+	    	   
+	    	   if(two.getField().size() > 0){
+	    		   dmg = one.getCard(i).getDamage();
+		    	   health = two.getCard(0).getHealth();
+		    	   val = health - dmg;
+	    		   two.getCard(0).setHealth(val);	//deal damage to the card
+	    		   
+	    		   
+	    		   System.out.println(one.getCard(i).getName()+ " attacks " + two.getCard(0).getName() +"!\n");
+	    		   stop();
+	    		   
+	    		   if(two.getCard(0).getHealth() < 0){ // if the opposing card is dead
+	    			   System.out.println(one.getCard(i).getName()+ " destroys " + two.getCard(0).getName() + "!\n");
+	    			   stop();
+	    			   two.getField().remove(0);	//remove it
+	    		   }
+	    	   }
+	    	   else{ //attack directly
+	    		   two.setHealth(two.getHealth()-dmg);
+	    		   System.out.println(one.getCard(i).getName()+ " attacks DIRECTLY!\n");
+	    		   gameOver(); //if attacked directly check player healths to see if anyone won
+	    	   }
+	       }    
+   }
+   
+   private boolean gameOver(){
+	   if(players.get(0).getHealth() <= 0){
+		   System.out.println("OPPONENT WINS");
+		   System.exit(0);
+		   return true;
+	   }   
+	   else if(players.get(1).getHealth() <= 0){
+		   System.out.println("PLAYER WINS");
+		   System.exit(0);
+		   return true;
+	   }else
+		   return false;
+   }
+
+   private void stop(){
+	   try {
+			System.in.read();
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+   }
+   
+   private void endOfTurn(){ 
+	   for(int i = 0; i< players.get(0).getHand().size();i++){ //clears any temporary damage boosts for player
+		   players.get(0).getHand().get(i).setDamage(players.get(0).getHand().get(i).getAttack());
+	   }
+	   
+	   for(int i = 0; i< players.get(1).getHand().size();i++){ //clears any temporary damage boosts for opponent
+		   players.get(1).getHand().get(i).setDamage(players.get(1).getHand().get(i).getAttack());
+	   }
+	   
+	   turn++;
+	   
+   }
 }

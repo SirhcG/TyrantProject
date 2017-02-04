@@ -13,8 +13,8 @@ public class ArmorBoost extends CardBase implements CardSkill {
     
     private int Armor;
     
-    public ArmorBoost(int Attack, int Health){
-        super(Attack, Health);
+    public ArmorBoost(String _name, int Attack, int Health){
+        super(_name, Attack, Health);
         this.Armor = 15;
     }
     
@@ -23,6 +23,8 @@ public class ArmorBoost extends CardBase implements CardSkill {
         int temp = this.getHealth();
         temp = temp + 15;
         this.setHealth(temp);
+        
+        checkSkill();
     }
     
   

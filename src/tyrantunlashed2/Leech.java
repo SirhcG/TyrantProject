@@ -13,8 +13,8 @@ public class Leech extends CardBase implements CardSkill{
 	
 	int leech;
 	
-	public Leech(int Attack, int Health, int _leech){
-        super(Attack, Health);
+	public Leech(String _name, int Attack, int Health, int _leech){
+        super(_name, Attack, Health);
         this.leech = _leech;
     }
 	
@@ -24,7 +24,7 @@ public class Leech extends CardBase implements CardSkill{
     }
 	
 	@Override
-	public void ability(Player p, Player o) {
+	public void ability(Player p, Player o) { //ability triggers before card attacks
 		int temp = getHealth();
 		
 		if(leech > getAttack())
@@ -34,5 +34,6 @@ public class Leech extends CardBase implements CardSkill{
 		
 		setHealth(temp);
 		
+		checkSkill();
 	}
 }

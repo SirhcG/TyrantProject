@@ -4,8 +4,8 @@ public class Berserk extends CardBase implements CardSkill{
 
 	int berserk;
 	
-	public Berserk(int Attack, int Health, int _berserk){
-        super(Attack, Health);
+	public Berserk(String _name, int Attack, int Health, int _berserk){
+        super(_name, Attack, Health);
         this.berserk = _berserk;
     }
 	
@@ -15,8 +15,9 @@ public class Berserk extends CardBase implements CardSkill{
     }
 	
 	@Override
-	public void ability(Player p, Player o) {
+	public void ability(Player p, Player o) { //ability triggers before card attacks
 		setAttack(getAttack()+berserk);
 		
+		checkSkill();
 	}
 }

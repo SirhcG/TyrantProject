@@ -13,6 +13,11 @@ import java.util.ArrayList;
  */
 public class Player {
     
+	public enum StrategyType{
+		SIMPLE, DEFENSIVE
+	}
+	//variable names should not be capitalized
+	private String name;
     private int Health;
     private ArrayList<CardBase> Field;
     private ArrayList<CardBase> Hand;
@@ -20,19 +25,27 @@ public class Player {
     private int CardsInField = 0;
     private int FieldPosition = 0;
     private int Check = 0;
+    Strategy strategy;
     
-    public Player(int Health , int cardAmount){
+    public Player(String _name, int Health , int cardAmount, StrategyType s){ //why do you need to pass in cardAmmount? is this just the maximum field and handsize? 
+    	
+    	name = _name;
         this.Health = Health;
-        CardBase[] Hand = new CardBase[cardAmount];
-        CardBase[] Field = new CardBase[cardAmount];
-     
+        Hand = new ArrayList<>();
+        Field = new ArrayList<>();
+        
+        if(s == StrategyType.SIMPLE)
+        	strategy = new SimpleStrategy(this);
+        else if (s == StrategyType.DEFENSIVE)
+        	strategy = new DefensiveStrategy(this);
+        
     }
     
     public void setHealth(int Health){
         this.Health = Health;
     }
     
-    public void setCards(ArrayList<CardBase> a){
+    public void setCards(ArrayList<CardBase> a){ 
         this.Hand = a;
     }
     
@@ -58,7 +71,8 @@ public class Player {
     }
     
     public int getCardInField(){
-        return this.CardsInField;
+        
+    	return Field.size();
     }
     
     public void removeCard(){
@@ -74,7 +88,6 @@ public class Player {
     public int Check(){
         return Check;
     }
-   
     
     public void setPosition(){
         this.FieldPosition++;
@@ -93,27 +106,27 @@ public class Player {
     
     public void setCard(){
         
-       CardBase temp = getHandCard(0);
-       Field.set(FieldPosition, temp);
+       CardBase temp = getHandCard(0); 
+       Field.set(FieldPosition, temp); 
        Hand.remove(0);
-       Hand.trimToSize();
+       Hand.trimToSize(); 
     }
     
-   public CardBase getCard(int index){
+   public CardBase getCard(int index){ 
        return Field.get(index);
    }
    
-   public CardBase getHandCard(int index){
+   public CardBase getHandCard(int index){ 
        return Hand.get(index);
    }
    
   
    
-   public void remove(int index){
+   public void remove(int index){ 
        Field.remove(index);
    }
    
-   public void removeHand(int index){
+   public void removeHand(int index){ 
         Hand.remove(index);
         
    }
@@ -126,5 +139,29 @@ public class Player {
         return Hand;
     }
     
+    public void playCard(int i){ //plays a card from hand to field
+    	
+    	CardBase c = Hand.get(i);
+    	Field.add(c);
+    	Hand.remove(i);
+    }
     
+    public void doMove(Move move){ //takes in a move object and does that move
+    	playCard(move.handIndex);
+    	
+    	
+    }
+    
+    public void showInfo(){
+    	System.out.println("\n"+ name + " INFORMATION");
+        System.out.println("Health : " + getHealth());
+        System.out.println(name + " HAND");
+        System.out.println(getHand());
+        System.out.println(name + " FIELD");
+        System.out.println(getField());
+    }
+    
+    public String getName(){
+    	return name;
+    }
 }
