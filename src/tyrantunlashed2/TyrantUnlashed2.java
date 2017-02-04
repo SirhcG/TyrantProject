@@ -18,9 +18,13 @@ public class TyrantUnlashed2 {
     public static void main(String[] args) {
         
         Player cg = new Player("Player", 100, 3, StrategyType.SIMPLE);
-        Player opponent = new Player("Opponent", 100, 3, StrategyType.DEFENSIVE);
+        Player opponent = new Player("Opponent", 40, 3, StrategyType.DEFENSIVE);
         Battle battle = new Battle(cg,opponent);
+        createSampleHand(cg,opponent);
         
+        battle.start();
+        
+        /*
         createSampleHand(cg,opponent);
         showInfo(cg,opponent);
            
@@ -39,7 +43,7 @@ public class TyrantUnlashed2 {
         System.out.println("\n!!!!!!!!OPPONENT DOES BATTLE!!!!!!!!\n");
         battle.battle(2); //do the battle for player 2
         showInfo(cg,opponent);
-        
+        */
     
     }
     
@@ -88,9 +92,9 @@ public class TyrantUnlashed2 {
         System.out.println("OPPONENT FIELD");
         System.out.println(opponent.getField());
     }
-<<<<<<< HEAD
+
 }
-=======
+
     
-}
->>>>>>> origin/2-2-17
+
+

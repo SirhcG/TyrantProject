@@ -148,8 +148,20 @@ public class Player {
     
     public void doMove(Move move){ //takes in a move object and does that move
     	playCard(move.handIndex);
-    	System.out.println(name + " PLAYED A CARD ONTO THE FIELD\n");
-    	turnCounter++;
+    	
+    	
     }
     
+    public void showInfo(){
+    	System.out.println("\n"+ name + " INFORMATION");
+        System.out.println("Health : " + getHealth());
+        System.out.println(name + " HAND");
+        System.out.println(getHand());
+        System.out.println(name + " FIELD");
+        System.out.println(getField());
+    }
+    
+    public String getName(){
+    	return name;
+    }
 }

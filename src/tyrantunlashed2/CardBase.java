@@ -56,5 +56,9 @@ public class CardBase {
      public String toString(){
         return(name + " Attack " + getAttack() + " Health " + getHealth());
     }
+    
+    public String getName(){
+    	return name;
+    }
    
 }
