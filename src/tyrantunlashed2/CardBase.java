@@ -11,7 +11,7 @@ package tyrantunlashed2;
  */
 public class CardBase {
     
-	private String name;
+    private String name;
     private int baseAttack;
     private int baseHealth;
     private int damage;

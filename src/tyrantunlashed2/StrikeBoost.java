@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * For this class I used the decorator design pattern to implements this cards special ability. Each child from CardBase has two methods which
+ * are overloaded from the CardSkill interface allowing any child that implements CardSkill to share similar characteristics. 
  */
 package tyrantunlashed2;
 
@@ -30,9 +29,9 @@ public class StrikeBoost extends CardBase implements CardSkill {
            o.setHealth(temp);
         }
         else if(val == 1){
-            int temp = o.getCard(val).getHealth();
+            int temp = o.getCard(val-1).getHealth();
             temp = temp - 15;
-            o.getCard(val).setHealth(temp);
+            o.getCard(val-1).setHealth(temp);
         }
         else if(val > 1){
             int temp = o.getCard(val - 1).getHealth();

@@ -1,3 +1,8 @@
+/*
+ * For this class I used the decorator design pattern to implements this cards special ability. Each child from CardBase has two methods which
+ * are overloaded from the CardSkill interface allowing any child that implements CardSkill to share similar characteristics. 
+ */
+
 package tyrantunlashed2;
 
 import java.util.ArrayList;

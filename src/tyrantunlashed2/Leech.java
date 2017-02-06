@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tyrantunlashed2;
 
 /**
- *
+ *This class is a child of cardbase and uses the decorator pattern for the cards ability. The decorator pattern allows us to create
+ * many instances of cards while still keeping a similarity between them. 
  * @author Danny Huang
  */
 public class Leech extends CardBase implements CardSkill{

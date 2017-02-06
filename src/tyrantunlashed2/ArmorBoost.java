@@ -6,12 +6,13 @@
 package tyrantunlashed2;
 
 /**
- *
+ * For this class I used the decorator design pattern to implements this cards special ability. Each child from CardBase has two methods which
+ * are overloaded from the CardSkill interface allowing any child that implements CardSkill to share similar characteristics. 
  * @author planb
  */
 public class ArmorBoost extends CardBase implements CardSkill {
     
-    private int Armor;
+    private int Armor; 
     
     public ArmorBoost(String _name, int Attack, int Health){
         super(_name, Attack, Health);
@@ -19,6 +20,7 @@ public class ArmorBoost extends CardBase implements CardSkill {
     }
     
      @Override
+     //Cards ability boosts health points by a set amount.
     public void ability(Player p, Player o) {
         int temp = this.getHealth();
         temp = temp + 15;
@@ -29,6 +31,7 @@ public class ArmorBoost extends CardBase implements CardSkill {
     
   
     @Override
+    //Allows players to see if a card has an ability or not. 
     public void checkSkill() {
         System.out.println("Cards Armor skill will increase Hp by 15 points !! \n");
     }
