@@ -1,20 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tyrantunlashed2;
 
 /**
- *
+ *This class is a child of cardbase and uses the decorator pattern for the cards ability. The decorator pattern allows us to create
+ * many instances of cards while still keeping a similarity between them. 
  * @author Danny Huang
  */
 public class Leech extends CardBase implements CardSkill{
 	
 	int leech;
 	
-	public Leech(int Attack, int Health, int _leech){
-        super(Attack, Health);
+	public Leech(String _name, int Attack, int Health, int _leech){
+        super(_name, Attack, Health);
         this.leech = _leech;
     }
 	
@@ -24,7 +21,7 @@ public class Leech extends CardBase implements CardSkill{
     }
 	
 	@Override
-	public void ability(Player p, Player o) {
+	public void ability(Player p, Player o) { //ability triggers before card attacks
 		int temp = getHealth();
 		
 		if(leech > getAttack())
@@ -34,5 +31,6 @@ public class Leech extends CardBase implements CardSkill{
 		
 		setHealth(temp);
 		
+		checkSkill();
 	}
 }

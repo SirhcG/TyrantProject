@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * For this class I used the decorator design pattern to implements this cards special ability. Each child from CardBase has two methods which
+ * are overloaded from the CardSkill interface allowing any child that implements CardSkill to share similar characteristics. 
  */
 package tyrantunlashed2;
 
@@ -11,8 +10,8 @@ package tyrantunlashed2;
  */
 public class AttackBoost extends CardBase implements CardSkill{
     
-    public AttackBoost(int Attack, int Health){
-        super(Attack, Health);
+    public AttackBoost(String _name, int Attack, int Health){
+        super(_name, Attack, Health);
     }
     
     @Override
@@ -21,6 +20,8 @@ public class AttackBoost extends CardBase implements CardSkill{
        int temp = this.getAttack();
        temp = temp + 15;
        this.setDamage(temp);
+       
+       checkSkill();
        }
 
     @Override

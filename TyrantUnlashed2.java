@@ -7,117 +7,90 @@ package tyrantunlashed2;
 
 import java.util.ArrayList;
 
+import tyrantunlashed2.Player.StrategyType;
+
 /**
  *
  * @author planb
  */
 public class TyrantUnlashed2 {
 
-   
     public static void main(String[] args) {
         
-        AttackBoost one = new AttackBoost(20, 30);
+        Player cg = new Player("Player", 100, 3, StrategyType.SIMPLE);
+        Player opponent = new Player("Opponent", 40, 3, StrategyType.DEFENSIVE);
+        Battle battle = new Battle(cg,opponent);
+        createSampleHand(cg,opponent);
         
-        AttackBoost card0 = new AttackBoost(20, 30);
-        ArmorBoost card1 = new ArmorBoost(20, 30);
-        StrikeBoost card2 = new StrikeBoost(20, 30);
+        battle.start();
         
-        CardBase empty = new CardBase(0,0);
+        /*
+        createSampleHand(cg,opponent);
+        showInfo(cg,opponent);
+           
+        Move move = new Move(0); //the 0 refers to the handindex of the card being played
+        cg.doMove(move);
+        showInfo(cg,opponent);
         
-        ArrayList<CardBase> emptylist = new ArrayList<>();
-        ArrayList<CardBase> emptylist2 = new ArrayList<>();
+        move = opponent.strategy.nextMove(); //testing defensive strategy. it should return a move with the highest hp card set to be 200 for testing
+        opponent.doMove(move);
+        showInfo(cg,opponent);
         
-        emptylist.add(empty);
-        emptylist.add(empty);
-        emptylist.add(empty);
+        System.out.println("\n!!!!!!!!PLAYER DOES BATTLE!!!!!!!!\n");
+        battle.battle(1); //do the battle for player 1
+        showInfo(cg,opponent);
         
-        emptylist2.add(empty);
-        emptylist2.add(empty);
-        emptylist2.add(empty);
-        
-        
-        
-        ArrayList<CardBase> val = new ArrayList<>();
-        
-        val.add(card0);
-        val.add(card1);
-        val.add(card2);
-        
-        Player cg = new Player(100, 3);
-        cg.setCards(val);
-        cg.setField(emptylist);
-        
-        
-       AttackBoost card3 = new AttackBoost(20, 20);
-       AttackBoost card4 = new AttackBoost(20, 15);
-       AttackBoost card5 = new AttackBoost(20, 25);
-        
-        ArrayList<CardBase> opponentHand = new ArrayList<>() ;
-        
-        opponentHand.add(card3);
-        opponentHand.add(card4);
-        opponentHand.add(card5);
-        
-        Player opponent = new Player(100, 3);
-        opponent.setCards(opponentHand);
-        opponent.setField(emptylist2);
-        opponent.setCheck();
-        
-        
-        Move test = new Move(cg);
-        Move test2 = new Move(opponent);
-       
-        test.playCard();
-        test.playCard();
-        test.playCard();
-        
-        test2.playCard();
-        test2.playCard();
-        test2.playCard();
-        
-        Battle x = new Battle(cg, opponent , test, test2);
-        x.Battle();
-        x.OppBattle();
-        x.Battle();
-        x.OppBattle();
-       // x.Battle();
-        //x.OppBattle();
-        x.CheckHealth(cg);
-        x.CheckHealth(opponent);
-       
-        
-        
-         
-        System.out.println(cg.getField());
-        System.out.println(cg.getHand());
-        System.out.println(cg.getHealth());
-        System.out.println();
-        
-        
-        System.out.println(opponent.getField());
-        System.out.println(opponent.getHand());
-        System.out.println(opponent.getHealth());
-        
-        
-        
-        
-        
-        
-        
-     
-        
-        
-        
-        
-        
-        
-       
-        
-       
-        
-        
-        
-      
+        System.out.println("\n!!!!!!!!OPPONENT DOES BATTLE!!!!!!!!\n");
+        battle.battle(2); //do the battle for player 2
+        showInfo(cg,opponent);
+        */
+    
     }
     
+    public static void createSampleHand(Player cg, Player opponent){
+    	
+    	//creating sample cards for player
+    	 AttackBoost one = new AttackBoost("name", 20, 30);
+         AttackBoost card0 = new AttackBoost("card1", 20, 30);
+         ArmorBoost card1 = new ArmorBoost("card2", 20, 30);
+         StrikeBoost card2 = new StrikeBoost("card3", 20, 30);
+         
+         ArrayList<CardBase> val = new ArrayList<>();
+          
+         val.add(card0);
+         val.add(card1);
+         val.add(card2);
+         
+         cg.setCards(val);
+         
+         //creating sample hand for opponent
+         AttackBoost card3 = new AttackBoost("card4", 20, 20);
+         AttackBoost card4 = new AttackBoost("card5", 20, 100);
+         AttackBoost card5 = new AttackBoost("card6", 20, 200);
+         
+         ArrayList<CardBase> opponentHand = new ArrayList<>() ;
+         
+         opponentHand.add(card3);
+         opponentHand.add(card4);
+         opponentHand.add(card5);
+         
+         opponent.setCards(opponentHand);
+    }
+    
+    public static void showInfo(Player cg, Player opponent){
+    	System.out.println("\nPLAYER INFORMATION");
+        System.out.println("Health : " + cg.getHealth());
+        System.out.println("PLAYER HAND");
+        System.out.println(cg.getHand());
+        System.out.println("PLAYER FIELD");
+        System.out.println(cg.getField());
+        
+        System.out.println("\nOPPONENT INFORMATION");
+        System.out.println("Health : " + opponent.getHealth());
+        System.out.println("OPPONENT HAND");
+        System.out.println(opponent.getHand());
+        System.out.println("OPPONENT FIELD");
+        System.out.println(opponent.getField());
+    }
+
 }

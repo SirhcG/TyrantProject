@@ -1,25 +1,37 @@
+
 package tyrantunlashed2;
+
+
+   
 /*
 * this is a card
-* this card has 0 attack and 5 health
-*this card has 1 skills, leech(heal random card)
+* this card has 2 attack and 4 health
+*this card has 1 skills, weaken(reduce the armor of target)
 */
-public class Medic extends CardBase {
+public class Medic extends CardBase implements CardSkill {
     
-    private final String CardName;
-    private CardSkill cs;
-//to set the health and attack, furthermore, set the name of card
-    public BarrageTank()
-    {
-        super(0,5);
-        this.CardName = "Medic";
+      
+   
+    public Medic(String _name, int Attack, int Health) {
+        super(_name, Attack, Health);
+        
     }
+
 // the first skill
-//heal card
-    public void skillOne(Player p, Player o)
+//reduce the target's armor
+    public void ability(Player p, Player o)
     {
-        this.cs = new Leech();
-        cs.ability(p,o);
-        cs.checkSkill();
+      int temp = p.getCard(0).getHealth();
+      temp = temp + 15;
+      p.getCard(0).setHealth(temp);
+      
+      checkSkill(); 
+    }
+
+    @Override
+    public void checkSkill() {
+        System.out.println("Cards Medic ability skill will heal one unit by 15 health points!! \n");
     }
 }
+    
+
